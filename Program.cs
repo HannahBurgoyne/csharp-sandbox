@@ -146,9 +146,10 @@ do
 
       while (anotherPet == "y" && petCount < maxPets)
       {
-        bool validEntry = false; 
+        bool validEntry = false;
 
-        do {
+        do
+        {
           Console.WriteLine("\n\rEnter 'dog' or 'cat' to begin a new entry");
           readResult = Console.ReadLine();
 
@@ -159,23 +160,65 @@ do
             if (animalSpecies != "dog" && animalSpecies != "cat")
             {
               // Console.WriteLine($"You entered: {animalSpecies}.");
-              validEntry = false; 
+              validEntry = false;
             }
-            else 
+            else
             {
               validEntry = true;
             }
-          } 
+          }
         } while (validEntry == false);
-        petCount = petCount + 1; 
+
+        // build a new animal ID starting with C for cat or D for dog 
+        animalID = animalSpecies.Substring(0, 1) + (petCount + 1).ToString();
+
+        // get the pet's age. can be ? at initial entry.
+        do
+        {
+          int petAge;
+          Console.WriteLine("Enter the pet's age or enter ? if unknown");
+          readResult = Console.ReadLine();
+          if (readResult != null)
+          {
+            animalAge = readResult;
+            if (animalAge != "?")
+            {
+              validEntry = int.TryParse(animalAge, out petAge);
+            }
+            else
+            {
+              validEntry = true;
+            }
+          }
+        } while (validEntry == false);
+
+        // get description of pet's physical appearance and condition (can be left blank)
+        do
+        {
+          Console.WriteLine("Enter a physical description of the pet (size, color, gender, weight, housebroken)");
+          readResult = Console.ReadLine();
+
+          if (readResult != null)
+          {
+            animalPhysicalDescription = readResult.ToLower();
+            if (animalPhysicalDescription == "")
+            {
+              animalPhysicalDescription = "tbd";
+            }
+          }
+
+        } while (animalPhysicalDescription == "");
+
+        petCount = petCount + 1;
 
         // check max pet limit before prompting user to add another pet
-        if (petCount < maxPets) 
+        if (petCount < maxPets)
         {
           Console.WriteLine("Do you want to enter info for another pet? (y/n)");
 
           // read user input before they type y or n
-          do {
+          do
+          {
             readResult = Console.ReadLine();
             if (readResult != null)
             {
@@ -188,9 +231,9 @@ do
 
       if (petCount >= maxPets)
       {
-      Console.WriteLine("We have reached our limit on the number of pets we can manage.");
-      Console.WriteLine("Press the Enter key to continue.");
-      readResult = Console.ReadLine();
+        Console.WriteLine("We have reached our limit on the number of pets we can manage.");
+        Console.WriteLine("Press the Enter key to continue.");
+        readResult = Console.ReadLine();
       }
       break;
 
@@ -231,11 +274,11 @@ do
       readResult = Console.ReadLine();
       break;
 
-    // default:
-    //   Console.WriteLine("this app feature is coming soon - please check back to see progress.");
-    //   Console.WriteLine("Press the Enter key to continue.");
-    //   readResult = Console.ReadLine();
-    //   break;
+      // default:
+      //   Console.WriteLine("this app feature is coming soon - please check back to see progress.");
+      //   Console.WriteLine("Press the Enter key to continue.");
+      //   readResult = Console.ReadLine();
+      //   break;
   }
 
 } while (menuSelection != "exit");
