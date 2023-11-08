@@ -209,6 +209,20 @@ do
 
         } while (animalPhysicalDescription == "");
 
+        do{
+          Console.WriteLine("Enter a description of the pet's personality (likes or dislikes, tricks, energy level)");
+          readResult = Console.ReadLine();
+
+          if (readResult != null)
+          {
+            animalPersonalityDescription = readResult.ToLower();
+            if (animalPersonalityDescription == "")
+            {
+              animalPersonalityDescription = "tbd";
+            } 
+          }
+        } while (animalPersonalityDescription == "");
+
         petCount = petCount + 1;
 
         // check max pet limit before prompting user to add another pet
