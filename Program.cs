@@ -1,5 +1,15 @@
 using System;
 
+/*
+This guided project is part of the Foundational C# Microsoft Course. The application is a simple CLI interface built for a fictional pet shelter. 
+
+A user can: 
+- View all pets 
+- Add a new pet to the system (as long as max capacity is not reached)
+
+This code teaches the basics of embedding loops and conditionals to create a logic-based application. 
+*/
+
 // the ourAnimals array will store the following: 
 string animalSpecies = "";
 string animalID = "";
@@ -15,7 +25,6 @@ string menuSelection = "";
 
 // array used to store runtime data, there is no persisted data
 string[,] ourAnimals = new string[maxPets, 6];
-
 
 // create some initial ourAnimals array entries
 for (int i = 0; i < maxPets; i++)
@@ -79,9 +88,6 @@ for (int i = 0; i < maxPets; i++)
 
 do
 {
-
-
-
   // display the top-level menu options
 
   Console.Clear();
